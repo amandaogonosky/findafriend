@@ -39,9 +39,9 @@
     <h4>You would describe yourself as easygoing.</h4>
     <select class="chosen-select" id="q1">
       <option value=""></option>
-      <option value="Yep">Yep</option>
-      <option value="Maybe">Maybe</option>
-      <option value="Disagree">Disagree</option>
+      <option value="1">Yep</option>
+      <option value="2">Maybe</option>
+      <option value="3">Disagree</option>
       
     </select>
 
@@ -49,27 +49,27 @@
     <h4>You prefer city lights to country roads.</h4>
     <select class="chosen-select" id="q2">
       <option value=""></option>
-      <option value="Yep">Yep</option>
-      <option value="Maybe">Maybe</option>
-      <option value="Disagree">Disagree</option>
+      <option value="1">Yep</option>
+      <option value="2">Maybe</option>
+      <option value="3">Disagree</option>
     </select>
 
     <h3><strong>Numbah 3</strong></h3>
     <h4>The Bald Eagle is your spirit animal.</h4>
     <select class="chosen-select" id="q3">
       <option value=""></option>
-      <option value="Yep">Yep</option>
-      <option value="Maybe">Maybe</option>
-      <option value="Disagree">Disagree</option>
+      <option value="1">Yep</option>
+      <option value="2">Maybe</option>
+      <option value="3">Disagree</option>
     </select>
 
     <h3><strong>Numbah 4</strong></h3>
     <h4>Astrology is a crock.</h4>
     <select class="chosen-select" id="q4">
       <option value=""></option>
-      <option value="Yep">Yep</option>
-      <option value="Maybe">Maybe</option>
-      <option value="Disagree">Disagree</option>
+      <option value="1">Yep</option>
+      <option value="2">Maybe</option>
+      <option value="3">Disagree</option>
     </select>
 
 
@@ -77,9 +77,9 @@
     <h4>Swearing is offensive.</h4>
     <select class="chosen-select" id="q5">
       <option value=""></option>
-      <option value="Yep">Yep</option>
-      <option value="Maybe">Maybe</option>
-      <option value="Disagree">Disagree</option>
+      <option value="1">Yep</option>
+      <option value="2">Maybe</option>
+      <option value="3">Disagree</option>
     </select>
 
 
@@ -87,18 +87,18 @@
     <h4>Chakra balancing is essential for optimal wellness.</h4>
     <select class="chosen-select" id="q6">
       <option value=""></option>
-      <option value="Yep">Yep</option>
-      <option value="Maybe">Maybe</option>
-      <option value="Disagree">Disagree</option>
+      <option value="1">Yep</option>
+      <option value="2">Maybe</option>
+      <option value="3">Disagree</option>
     </select>
 
     <h3><strong>Numbah 7</strong></h3>
     <h4>Real housewives franchise is overrated.</h4>
     <select class="chosen-select" id="q7">
       <option value=""></option>
-      <option value="Yep">Yep</option>
-      <option value="Maybe">Maybe</option>
-      <option value="Disagree">Disagree</option>
+      <option value="1">Yep</option>
+      <option value="2">Maybe</option>
+      <option value="3">Disagree</option>
       
     </select>
    
@@ -125,11 +125,11 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h2 class="modal-title"><strong>Fire Match</strong></h2>
+          <h2 class="modal-title"><strong>Fire Match<span class ="glyphicon glyphicon-hand-left"></strong></h2>
         </div>
         <div class="modal-body">
           <h2 id="match-name"></h2>
-          <!-- <img id="match" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg" alt="what pic"> -->
+          <img id="match" alt="what pic"></img>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -142,7 +142,7 @@
   $("#submit").on("click", function(){
       event.preventDefault();
         const newFriend = {
-  [
+  
             name: $("#name").val().trim(),
             photo:$("#photo").val().trim(),
             scores: [
@@ -154,10 +154,18 @@
              $('#q6').val().trim(),
              $('#q7').val().trim(),
 ]
+
     }
+  $.post('/api/friends', newFriend, function(data)
+        {
+          $("#match-name").text(data.name);
+          // $("#match").attr("src", data.photo);
+          $("#results-modal").modal("toggle");
+          console.log(data);
+        
+        });
 
-  )};
-
+  });
 
 </script>
  

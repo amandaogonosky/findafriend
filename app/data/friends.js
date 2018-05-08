@@ -9,6 +9,8 @@ const friendsinfo = [
             3,
             1,
             1,
+            3,
+            3,
 
         ]
     },
@@ -21,6 +23,8 @@ const friendsinfo = [
             3,
             2,
             2,
+            3,
+            3,
 
         ]
     },
@@ -33,6 +37,8 @@ const friendsinfo = [
             1,
             3,
             3,
+            2,
+            1,
 
         ]
     }
